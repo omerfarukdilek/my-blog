@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import VisitorCounter from './components/VisitorCounter/VisitorCounter';
 import {
-  BrowserRouter,
+  BrowserRouter as Router,
   Route,
   Routes,
   Navigate
@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/my-blog">
+    <Router basename="/my-blog">  {/* Bu satırı ekleyin */}
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
@@ -40,11 +40,11 @@ function App() {
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
